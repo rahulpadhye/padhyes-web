@@ -1,0 +1,15 @@
+title: The Padhye Family
+description: A family tree and personal space for the Padhye family.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://padhyes.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username:
+github_username:
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+collections:
+  people:
+    output: true
