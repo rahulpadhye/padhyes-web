@@ -5,10 +5,25 @@ layout: default
 {% assign person_id = page.person_id %}
 {% assign person = site.data.family | where: "id", person_id | first %}
 
-<article>
-  <h2>{{ person.name }}</h2>
-  <ul>
-    <li><strong>Gender:</strong> {{ person.gender }}</li>
+{% assign male_avatar = "https://cdn3.iconfinder.com/data/icons/basic-interface/100/user_man-128.png" %}
+{% assign female_avatar = "https://cdn3.iconfinder.com/data/icons/avatar-user/64/Artboard_11-128.png" %}
+
+{% if person.photo %}
+  {% assign person_image = person.photo %}
+{% else %}
+  {% if person.gender == "Male" %}
+    {% assign person_image = male_avatar %}
+  {% else %}
+    {% assign person_image = female_avatar %}
+  {% endif %}
+{% endif %}
+
+<article class="person-details">
+  <img src="{{ person_image }}" alt="Photo of {{ person.name }}" class="person-avatar">
+  <div class="person-info">
+    <h2>{{ person.name }}</h2>
+    <ul>
+      <li><strong>Gender:</strong> {{ person.gender }}</li>
     <li><strong>Born:</strong> {{ person.birth_date }}</li>
     {% if person.death_date %}
     <li><strong>Died:</strong> {{ person.death_date }}</li>
@@ -52,4 +67,5 @@ layout: default
     </li>
     {% endif %}
   </ul>
+  </div>
 </article>
