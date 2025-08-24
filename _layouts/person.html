@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+{% assign person_id = page.person_id %}
+{% assign person = site.data.family | where: "id", person_id | first %}
+
+<article>
+  <h2>{{ person.name }}</h2>
+  <ul>
+    <li><strong>Gender:</strong> {{ person.gender }}</li>
+    <li><strong>Born:</strong> {{ person.birth_date }}</li>
+    {% if person.death_date %}
+    <li><strong>Died:</strong> {{ person.death_date }}</li>
+    {% endif %}
+  </ul>
+
+  <h3>Family</h3>
+  <ul>
+    {% if person.parents.size > 0 %}
+    <li><strong>Parents:</strong>
+      <ul>
+      {% for parent_id in person.parents %}
+        {% assign parent = site.data.family | where: "id", parent_id | first %}
+        {% assign parent_slug = parent.name | slugify %}
+        {% assign parent_page = site.people | where: "slug", parent_slug | first %}
+        <li><a href="{{ parent_page.url | relative_url }}">{{ parent.name }}</a></li>
+      {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+
+    {% if person.spouse %}
+    <li><strong>Spouse:</strong>
+      {% assign spouse = site.data.family | where: "id", person.spouse | first %}
+      {% assign spouse_slug = spouse.name | slugify %}
+      {% assign spouse_page = site.people | where: "slug", spouse_slug | first %}
+      <a href="{{ spouse_page.url | relative_url }}">{{ spouse.name }}</a>
+    </li>
+    {% endif %}
+
+    {% if person.children.size > 0 %}
+    <li><strong>Children:</strong>
+      <ul>
+      {% for child_id in person.children %}
+        {% assign child = site.data.family | where: "id", child_id | first %}
+        {% assign child_slug = child.name | slugify %}
+        {% assign child_page = site.people | where: "slug", child_slug | first %}
+        <li><a href="{{ child_page.url | relative_url }}">{{ child.name }}</a></li>
+      {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+  </ul>
+</article>

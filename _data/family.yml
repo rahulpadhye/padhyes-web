@@ -1,0 +1,48 @@
+- id: 1
+  name: "Ram Padhye"
+  gender: "Male"
+  birth_date: "1940-01-01"
+  death_date: "2010-12-31"
+  parents: []
+  spouse: 2
+  children: [3, 4]
+
+- id: 2
+  name: "Sita Padhye"
+  gender: "Female"
+  birth_date: "1945-05-15"
+  parents: []
+  spouse: 1
+  children: [3, 4]
+
+- id: 3
+  name: "Laxman Padhye"
+  gender: "Male"
+  birth_date: "1970-03-20"
+  parents: [1, 2]
+  spouse: 5
+  children: [6]
+
+- id: 4
+  name: "Gita Padhye"
+  gender: "Female"
+  birth_date: "1972-11-10"
+  parents: [1, 2]
+  spouse: null
+  children: []
+
+- id: 5
+  name: "Urmila Padhye"
+  gender: "Female"
+  birth_date: "1975-02-25"
+  parents: []
+  spouse: 3
+  children: [6]
+
+- id: 6
+  name: "Rahul Padhye"
+  gender: "Male"
+  birth_date: "2000-07-07"
+  parents: [3, 5]
+  spouse: null
+  children: []
